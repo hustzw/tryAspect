@@ -61,6 +61,7 @@ public class AspectTest {
     @Around("@annotation(authAble)")//com.example.demo.aop.AuthAble)(authAble)")
     public Object catTransactionControl(ProceedingJoinPoint joinPoint, AuthAble authAble) throws Throwable {
 
+        System.out.println("catTransactionControl");
         return joinPoint.proceed();
     }
 }

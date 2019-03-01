@@ -14,4 +14,8 @@ public class SecondAopService {
     public String msy(String s) {
         return s;
     }
+
+    public String second(String s) {
+        return s;
+    }
 }

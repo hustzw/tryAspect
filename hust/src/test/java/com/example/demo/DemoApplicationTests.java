@@ -44,4 +44,10 @@ public class DemoApplicationTests {
         secondAopService.msy("heko");
     }
 
+    @Test
+    public void shooslww() {
+        secondAopService.second("heko");
+    }
+
+
 }
