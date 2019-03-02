@@ -4,6 +4,7 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
@@ -40,10 +41,20 @@ public class AspectTest {
         System.out.println("after happen");
     }
 
+    @Order(2) /// 只对类有效
     @Before("execution(* com.example.demo.service.MyAopService.greet(..))")
     public void doRecoveryAction3(JoinPoint joinPoint) {
         // ...
-        System.out.println("before happen");
+//        throw new RuntimeException();
+        System.out.println("before1 happen");
+    }
+
+    @Order(1)
+    @Before("execution(* com.example.demo.service.MyAopService.greet(..))")
+    public void doRecoveryAction4(JoinPoint joinPoint) {
+        // ...
+//        throw new RuntimeException();
+        System.out.println("before2 happen");
     }
 
     @Around("execution(* com.example.demo.service.*.* (..)) ")
