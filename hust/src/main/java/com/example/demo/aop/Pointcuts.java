@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class Pointcuts {
     @Pointcut("execution(* com.example.demo.service.MyAopService.greet(..))")
     public void logMessage() {
-        System.out.println("logMessage");
+        // 此方法无任何执行内容，只会被引用 pointcut。不会被执行
     }
 
     @Pointcut("execution(* com.example.demo.service.MyAopService.say(..))")
@@ -22,12 +22,7 @@ public class Pointcuts {
         System.out.println("logAttachment");
     }
 
-    @Pointcut("logMessage() || logAttachment()")
-    public void logMessage2() {
-        System.out.println("logMessage2");
-    }
-
-    @Before("execution(* com.example.demo.aop.Pointcuts.logMessage2(..))")
+    @Before("logMessage()")
     public void kakak() {
         System.out.println("Pointcuts::kakak");
     }
